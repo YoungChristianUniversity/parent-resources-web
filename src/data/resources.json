@@ -1,0 +1,72 @@
+[
+  {
+    "name": "All Pro Dad",
+    "description": "Daily email devotionals and resources helping dads engage with their kids on topics of faith, character, and relationships.",
+    "url": "https://www.allprodad.com",
+    "formats": ["newsletter", "website"],
+    "topics": ["faith & devotionals", "parenting skills"]
+  },
+  {
+    "name": "Young Christian University",
+    "description": "An app and platform equipping young adults with Christ-centered teaching on faith, purpose, and real-world skills.",
+    "url": "https://ycu.app",
+    "formats": ["app", "website"],
+    "topics": ["faith & devotionals", "college & career prep"]
+  },
+  {
+    "name": "Axis",
+    "description": "Helps parents understand and navigate teen culture through conversation-starting guides, newsletters, and cultural trend reports.",
+    "url": "https://axis.org",
+    "formats": ["newsletter", "website"],
+    "topics": ["technology & screen time", "parenting skills"]
+  },
+  {
+    "name": "YouVersion Bible App",
+    "description": "Free Bible app with reading plans, devotionals, and audio Bibles — includes content designed for teens and families.",
+    "url": "https://www.youversion.com",
+    "formats": ["app"],
+    "topics": ["faith & devotionals"]
+  },
+  {
+    "name": "Focus on the Family",
+    "description": "Comprehensive Christian ministry offering podcasts, articles, and tools for navigating parenting, relationships, and faith.",
+    "url": "https://www.focusonthefamily.com",
+    "formats": ["podcast", "website"],
+    "topics": ["faith & devotionals", "relationships & dating", "parenting skills"]
+  },
+  {
+    "name": "The Art of Manliness",
+    "description": "Podcast, articles, and books exploring character, virtue, and practical skills — great for dads raising teen boys.",
+    "url": "https://www.artofmanliness.com",
+    "formats": ["podcast", "book", "website"],
+    "topics": ["character & values"]
+  },
+  {
+    "name": "Plugged In",
+    "description": "Focus on the Family's entertainment review site — helps parents make informed decisions about movies, TV, music, and games.",
+    "url": "https://www.pluggedin.com",
+    "formats": ["website"],
+    "topics": ["technology & screen time"]
+  },
+  {
+    "name": "Parenting Teens with Dr. Ken Ginsburg",
+    "description": "Evidence-based guidance on building resilience in teens, balancing protection with trust, and supporting mental health.",
+    "url": "https://parentandteen.com",
+    "formats": ["book", "podcast"],
+    "topics": ["mental health", "parenting skills"]
+  },
+  {
+    "name": "Growing Up Social by Gary Chapman",
+    "description": "Practical book helping parents teach kids to navigate screens and social media while building real-world relationships.",
+    "url": "https://www.5lovelanguages.com",
+    "formats": ["book"],
+    "topics": ["technology & screen time", "parenting skills"]
+  },
+  {
+    "name": "Age of Opportunity by Paul Tripp",
+    "description": "A biblical framework for understanding the teen years as a window of opportunity for gospel-centered parenting.",
+    "url": "https://www.paultripp.com",
+    "formats": ["book"],
+    "topics": ["faith & devotionals", "character & values"]
+  }
+]
