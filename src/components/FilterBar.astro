@@ -1,0 +1,48 @@
+---
+import { formats, topics } from "../data/categories";
+---
+
+<div id="filter-bar" class="mb-8 space-y-4">
+  <div>
+    <h3 class="text-sm font-medium text-stone-500 mb-2">Format</h3>
+    <div class="flex flex-wrap gap-2">
+      <button
+        class="filter-pill active text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-stone-900 text-white transition-colors"
+        data-filter-type="format"
+        data-filter-value="all"
+      >
+        All
+      </button>
+      {formats.map((format) => (
+        <button
+          class="filter-pill text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition-colors"
+          data-filter-type="format"
+          data-filter-value={format}
+        >
+          {format}
+        </button>
+      ))}
+    </div>
+  </div>
+  <div>
+    <h3 class="text-sm font-medium text-stone-500 mb-2">Topic</h3>
+    <div class="flex flex-wrap gap-2">
+      <button
+        class="filter-pill active text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-stone-900 text-white transition-colors"
+        data-filter-type="topic"
+        data-filter-value="all"
+      >
+        All
+      </button>
+      {topics.map((topic) => (
+        <button
+          class="filter-pill text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition-colors"
+          data-filter-type="topic"
+          data-filter-value={topic}
+        >
+          {topic}
+        </button>
+      ))}
+    </div>
+  </div>
+</div>

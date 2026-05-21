@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
 import ResourceGrid from "../components/ResourceGrid.astro";
+import FilterBar from "../components/FilterBar.astro";
 import type { Resource } from "../data/categories";
 import resourceData from "../data/resources.json";
 
@@ -13,6 +14,7 @@ const resources = resourceData as Resource[];
   <Header />
   <Hero />
   <main class="max-w-6xl mx-auto px-4 pb-16">
+    <FilterBar />
     <ResourceGrid resources={resources} />
   </main>
 </Layout>
