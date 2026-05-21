@@ -1,5 +1,13 @@
-<section class="w-full bg-surface-container-low flex flex-col items-center justify-center pt-8 pb-16 px-4 md:px-10">
-  <div class="w-full max-w-[800px] bg-surface rounded-2xl shadow-sm border border-outline-variant p-8 md:p-12 flex flex-col items-center text-center">
+<section class="w-full relative bg-surface-container-low flex flex-col items-center justify-center pt-8 pb-16 px-4 md:px-10 overflow-hidden">
+  <!-- Hero background image area -->
+  <div class="absolute inset-0 z-0 w-full h-[300px] md:h-[400px]">
+    <!-- Replace src with your own hero image -->
+    <div class="w-full h-full bg-gradient-to-br from-secondary/20 via-surface-container-high to-surface-container-low" aria-hidden="true"></div>
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-surface-container-low/90"></div>
+  </div>
+
+  <!-- Hero content card, overlapping the image -->
+  <div class="relative z-10 w-full max-w-[800px] mt-[150px] md:mt-[200px] bg-surface rounded-2xl shadow-sm border border-outline-variant p-8 md:p-12 flex flex-col items-center text-center translate-y-8">
     <h1 class="text-3xl md:text-display-lg font-serif font-bold text-primary mb-4 leading-tight tracking-tight">
       Faith-Based Parent Resources for Teenagers
     </h1>
