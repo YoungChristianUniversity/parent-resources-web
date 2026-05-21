@@ -2,12 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Hero from "../components/Hero.astro";
+import ResourceGrid from "../components/ResourceGrid.astro";
+import type { Resource } from "../data/categories";
+import resourceData from "../data/resources.json";
+
+const resources = resourceData as Resource[];
 ---
 
 <Layout title="Parent Resources — Faith-Based Resources for Parents of Teens">
   <Header />
   <Hero />
   <main class="max-w-6xl mx-auto px-4 pb-16">
-    <p class="text-stone-500">Resources coming next...</p>
+    <ResourceGrid resources={resources} />
   </main>
 </Layout>
