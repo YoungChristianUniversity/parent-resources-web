@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inflight Widget — Vanilla HTML Test</title>
+</head>
+<body style="font-family: system-ui, sans-serif; padding: 40px; max-width: 600px; margin: 0 auto;">
+  <h1>Vanilla HTML widget test</h1>
+  <p>Served as a plain static file by Netlify at the same hostname as the Astro app. No Astro runtime touches this page.</p>
+  <p>If the widget appears here but not on the Astro home page, the issue is something specific to how Astro renders/hydrates the page.</p>
+  <p>If neither shows the widget, the issue is the version row's visibility for this hostname.</p>
+
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.inflight.co/widget.js';
+      s.setAttribute('data-workspace', 'carter-price-workspace');
+      s.async = true;
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>
