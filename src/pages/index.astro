@@ -11,10 +11,10 @@ import resourceData from "../data/resources.json";
 const resources = resourceData as Resource[];
 ---
 
-<Layout title="Parent Resources — Faith-Based Resources for Parents of Teens">
+<Layout title="FaithParent — Faith-Based Resources for Parents of Teens">
   <Header />
   <Hero />
-  <main class="max-w-6xl mx-auto px-4 pb-16">
+  <main class="w-full max-w-[1200px] mx-auto px-4 md:px-10 mt-16 md:mt-24 pb-16 flex flex-col md:flex-row gap-8 lg:gap-12">
     <FilterBar />
     <ResourceGrid resources={resources} />
   </main>
@@ -23,32 +23,16 @@ const resources = resourceData as Resource[];
 
 <script>
   const filterBar = document.getElementById("filter-bar")!;
-  const cards = document.querySelectorAll<HTMLElement>("#resource-grid > div");
+  const cards = document.querySelectorAll<HTMLElement>("#resource-grid > article");
+  const countEl = document.getElementById("resource-count");
 
   const activeFilters: { format: Set<string>; topic: Set<string> } = {
     format: new Set(),
     topic: new Set(),
   };
 
-  function updatePillStyles() {
-    filterBar.querySelectorAll<HTMLElement>(".filter-pill").forEach((pill) => {
-      const type = pill.dataset.filterType as "format" | "topic";
-      const value = pill.dataset.filterValue!;
-      const isAllButton = value === "all";
-      const activeSet = activeFilters[type];
-      const isActive = isAllButton ? activeSet.size === 0 : activeSet.has(value);
-
-      if (isActive) {
-        pill.classList.add("bg-stone-900", "text-white");
-        pill.classList.remove("bg-white", "text-stone-700");
-      } else {
-        pill.classList.remove("bg-stone-900", "text-white");
-        pill.classList.add("bg-white", "text-stone-700");
-      }
-    });
-  }
-
   function filterCards() {
+    let visibleCount = 0;
     cards.forEach((card) => {
       const cardFormats: string[] = JSON.parse(card.dataset.formats || "[]");
       const cardTopics: string[] = JSON.parse(card.dataset.topics || "[]");
@@ -60,26 +44,27 @@ const resources = resourceData as Resource[];
         activeFilters.topic.size === 0 ||
         cardTopics.some((t) => activeFilters.topic.has(t));
 
-      card.style.display = matchesFormat && matchesTopic ? "" : "none";
+      const visible = matchesFormat && matchesTopic;
+      card.style.display = visible ? "" : "none";
+      if (visible) visibleCount++;
     });
+
+    if (countEl) countEl.textContent = String(visibleCount);
   }
 
-  filterBar.addEventListener("click", (e) => {
-    const pill = (e.target as HTMLElement).closest<HTMLElement>(".filter-pill");
-    if (!pill) return;
+  filterBar.addEventListener("change", (e) => {
+    const checkbox = e.target as HTMLInputElement;
+    if (!checkbox.classList.contains("filter-checkbox")) return;
 
-    const type = pill.dataset.filterType as "format" | "topic";
-    const value = pill.dataset.filterValue!;
+    const type = checkbox.dataset.filterType as "format" | "topic";
+    const value = checkbox.dataset.filterValue!;
 
-    if (value === "all") {
-      activeFilters[type].clear();
-    } else if (activeFilters[type].has(value)) {
-      activeFilters[type].delete(value);
-    } else {
+    if (checkbox.checked) {
       activeFilters[type].add(value);
+    } else {
+      activeFilters[type].delete(value);
     }
 
-    updatePillStyles();
     filterCards();
   });
 </script>

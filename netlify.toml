@@ -4,3 +4,13 @@
 
 [build.environment]
   NODE_VERSION = "22"
+
+# Disable Pretty URLs to prevent query param stripping on redirects
+[build.processing.html]
+  pretty_urls = false
+
+# Serve index.html for root without redirecting (preserves query params)
+[[redirects]]
+  from = "/"
+  to = "/index.html"
+  status = 200

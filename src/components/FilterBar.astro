@@ -1,48 +1,74 @@
 ---
 import { formats, topics } from "../data/categories";
+
+const formatLabels: Record<string, string> = {
+  "book": "Books",
+  "podcast": "Podcasts",
+  "newsletter": "Newsletters",
+  "website": "Websites",
+  "app": "Apps",
+  "video/course": "Videos & Courses",
+};
+
+const topicLabels: Record<string, string> = {
+  "faith & devotionals": "Spiritual Growth",
+  "relationships & dating": "Relationships",
+  "mental health": "Mental Health",
+  "technology & screen time": "Technology",
+  "character & values": "Character & Values",
+  "college & career prep": "College & Career",
+  "parenting skills": "Parenting Skills",
+};
 ---
 
-<div id="filter-bar" class="mb-8 space-y-4">
-  <div>
-    <h3 class="text-sm font-medium text-stone-500 mb-2">Format</h3>
-    <div class="flex flex-wrap gap-2">
-      <button
-        class="filter-pill active text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-stone-900 text-white transition-colors"
-        data-filter-type="format"
-        data-filter-value="all"
-      >
-        All
-      </button>
-      {formats.map((format) => (
-        <button
-          class="filter-pill text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition-colors"
-          data-filter-type="format"
-          data-filter-value={format}
-        >
-          {format}
-        </button>
-      ))}
+<aside id="filter-bar" class="w-full md:w-64 flex-shrink-0">
+  <div class="sticky top-[100px] flex flex-col gap-8">
+    <div>
+      <h2 class="text-headline-md font-serif font-bold text-primary mb-1">Refine By</h2>
+    </div>
+
+    <!-- Topics -->
+    <div class="border-b border-outline-variant pb-6">
+      <h3 class="text-label-lg font-sans font-semibold text-on-surface-variant mb-4 uppercase tracking-wider">Topics</h3>
+      <ul class="flex flex-col gap-3">
+        {topics.map((topic) => (
+          <li>
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                class="filter-checkbox w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary cursor-pointer"
+                data-filter-type="topic"
+                data-filter-value={topic}
+              />
+              <span class="text-body-md font-sans text-on-surface group-hover:text-secondary transition-colors">
+                {topicLabels[topic] || topic}
+              </span>
+            </label>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Resource Type -->
+    <div class="pb-6">
+      <h3 class="text-label-lg font-sans font-semibold text-on-surface-variant mb-4 uppercase tracking-wider">Resource Type</h3>
+      <ul class="flex flex-col gap-3">
+        {formats.map((format) => (
+          <li>
+            <label class="flex items-center gap-3 cursor-pointer group">
+              <input
+                type="checkbox"
+                class="filter-checkbox w-5 h-5 rounded border-outline-variant text-secondary focus:ring-secondary cursor-pointer"
+                data-filter-type="format"
+                data-filter-value={format}
+              />
+              <span class="text-body-md font-sans text-on-surface group-hover:text-secondary transition-colors">
+                {formatLabels[format] || format}
+              </span>
+            </label>
+          </li>
+        ))}
+      </ul>
     </div>
   </div>
-  <div>
-    <h3 class="text-sm font-medium text-stone-500 mb-2">Topic</h3>
-    <div class="flex flex-wrap gap-2">
-      <button
-        class="filter-pill active text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-stone-900 text-white transition-colors"
-        data-filter-type="topic"
-        data-filter-value="all"
-      >
-        All
-      </button>
-      {topics.map((topic) => (
-        <button
-          class="filter-pill text-sm px-3 py-1.5 rounded-full border border-stone-300 bg-white text-stone-700 hover:bg-stone-100 transition-colors"
-          data-filter-type="topic"
-          data-filter-value={topic}
-        >
-          {topic}
-        </button>
-      ))}
-    </div>
-  </div>
-</div>
+</aside>
