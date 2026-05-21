@@ -6,33 +6,51 @@ interface Props {
 }
 
 const { resource } = Astro.props;
+
+const topicLabels: Record<string, string> = {
+  "faith & devotionals": "Spiritual Growth",
+  "relationships & dating": "Relationships",
+  "mental health": "Mental Health",
+  "technology & screen time": "Technology",
+  "character & values": "Character & Values",
+  "college & career prep": "College & Career",
+  "parenting skills": "Parenting Skills",
+};
 ---
 
-<div
-  class="bg-white rounded-lg border border-stone-200 p-5 flex flex-col"
+<article
+  class="flex flex-col bg-surface-bright border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300"
   data-formats={JSON.stringify(resource.formats)}
   data-topics={JSON.stringify(resource.topics)}
 >
-  <h3 class="text-lg font-semibold text-stone-900 mb-2">{resource.name}</h3>
-  <p class="text-stone-600 text-sm mb-4 flex-1">{resource.description}</p>
-  <div class="flex flex-wrap gap-1.5 mb-4">
-    {resource.formats.map((format) => (
-      <span class="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">
-        {format}
-      </span>
-    ))}
-    {resource.topics.map((topic) => (
-      <span class="text-xs bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">
-        {topic}
-      </span>
-    ))}
+  <!-- Image placeholder -->
+  <div class="h-48 w-full bg-surface-container-high flex items-center justify-center">
+    <span class="text-on-surface-variant/40 text-4xl font-serif font-bold select-none">
+      {resource.name.charAt(0)}
+    </span>
   </div>
-  <a
-    href={resource.url}
-    target="_blank"
-    rel="noopener noreferrer"
-    class="text-sm font-medium text-blue-700 hover:text-blue-900 hover:underline"
-  >
-    Visit resource &rarr;
-  </a>
-</div>
+
+  <div class="p-6 flex flex-col flex-1">
+    <h4 class="text-headline-md font-serif font-semibold text-primary mb-2 line-clamp-2">
+      {resource.name}
+    </h4>
+    <p class="text-body-md font-sans text-on-surface-variant mb-6 line-clamp-3 flex-1">
+      {resource.description}
+    </p>
+    <div class="flex flex-wrap gap-2 mb-6 mt-auto">
+      {resource.topics.map((topic) => (
+        <span class="px-3 py-1 bg-surface-container-high text-on-surface-variant text-label-sm font-sans font-medium rounded-full">
+          {topicLabels[topic] || topic}
+        </span>
+      ))}
+    </div>
+    <a
+      href={resource.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="block w-full py-3 bg-secondary text-on-secondary rounded-lg font-sans font-semibold text-label-lg text-center hover:opacity-90 transition-opacity duration-200"
+    >
+      Visit Resource
+    </a>
+  </div>
+</article>
