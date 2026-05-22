@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inflight Widget — No data-workspace</title>
+</head>
+<body style="font-family: system-ui, sans-serif; padding: 40px; max-width: 600px; margin: 0 auto;">
+  <h1>Widget test — no data-workspace</h1>
+  <p>Same hostname as the failing pages. The only difference: <code>data-workspace</code> is intentionally omitted, so widget.js and embed.js both skip their workspace_id filters.</p>
+  <p>If the widget renders here, the bug is that <code>data-workspace="carter-price-workspace"</code> is the wrong value — it must be the workspace's <strong>widget_id</strong> column (an 8-char nanoid), not the slug or UUID.</p>
+
+  <script>
+    (function () {
+      var s = document.createElement('script');
+      s.src = 'https://www.inflight.co/widget.js';
+      // intentionally NO data-workspace
+      s.async = true;
+      document.body.appendChild(s);
+    })();
+  </script>
+</body>
+</html>
